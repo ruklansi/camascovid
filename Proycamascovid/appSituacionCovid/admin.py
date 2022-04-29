@@ -14,7 +14,7 @@ class personas(admin.ModelAdmin):
 admin.site.register(personas_covid, personas)
 
 class camas(admin.ModelAdmin):
-    list_display = ('fecha_cama', 'camas_ocupadas', 'camas_libres', 'hospital')
+    list_display = ('fecha_cama', 'camas_ocupadas', 'camas_libres', 'hospital', 'situacion')
 
 admin.site.register(camas_hospitales, camas)
 
