@@ -9,7 +9,8 @@ class personas_covid(models.Model):
         (3, 'ARA'),
     )
 
-    fecha_personas = models.DateField(auto_now=False, auto_now_add=False)
+    fecha_inicio = models.DateField(auto_now=False, auto_now_add=False)
+    fecha_fin = models.DateField(auto_now=False, null=True, auto_now_add=False)
     fuerza = models.PositiveSmallIntegerField(choices=FUERZAS, null=True, blank=True)
     activos = models.IntegerField(blank=True, null=True, default=0)
     recuperados = models.IntegerField(blank=True, null=True, default=0)
@@ -20,7 +21,7 @@ class personas_covid(models.Model):
         verbose_name_plural = "Situación Sanitaria - Personal Militar Actividad "
 
     def __str__(self):
-        return str(self.fecha_personas)
+        return str(self.fecha_inicio)
 
 class hospitales(models.Model):
     REGION = (
