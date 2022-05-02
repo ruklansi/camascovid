@@ -9,12 +9,12 @@ from .models import camas_hospitales
 
 
 class personas(admin.ModelAdmin):
-    list_display = ('fuerza', 'activos', 'recuperados', 'sospechosos', 'fallecidos')
+    list_display = ('semana', 'fuerza', 'activos', 'recuperados', 'sospechosos', 'fallecidos')
 
 admin.site.register(personas_covid, personas)
 
 class camas(admin.ModelAdmin):
-    list_display = ('fecha_cama', 'camas_ocupadas', 'camas_libres', 'hospital', 'situacion')
+    list_display = ('semana','camas_ocupadas', 'camas_libres', 'hospital', 'situacion')
 
 admin.site.register(camas_hospitales, camas)
 

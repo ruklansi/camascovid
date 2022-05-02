@@ -9,7 +9,7 @@ class personas_covid(models.Model):
         (3, 'ARA'),
     )
 
-    
+    semana = models.IntegerField(blank=True, null=True, default=0)
     fuerza = models.PositiveSmallIntegerField(choices=FUERZAS, null=True, blank=True)
     activos = models.IntegerField(blank=True, null=True, default=0)
     recuperados = models.IntegerField(blank=True, null=True, default=0)
@@ -20,7 +20,7 @@ class personas_covid(models.Model):
         verbose_name_plural = "Situación Sanitaria - Personal Militar Actividad "
 
     def __str__(self):
-        return str(self.fuerza)
+        return str(self.semana)
 
 class hospitales(models.Model):
     REGION = (
@@ -50,7 +50,7 @@ class camas_hospitales(models.Model):
         (3, 'AISLAMIENTO')
     )
 
-    fecha_cama = models.DateField(auto_now=False, auto_now_add=False)
+    semana = models.IntegerField(blank=True, null=True, default=0)
     camas_ocupadas = models.IntegerField(blank=True, null=True, default=0)
     camas_libres = models.IntegerField(blank=True, null=True, default=0)
     hospital = models.ForeignKey(hospitales, blank=True, null=True, on_delete=models.CASCADE)
@@ -60,4 +60,4 @@ class camas_hospitales(models.Model):
         verbose_name_plural = "Camas Hospitales"
 
     def __str__(self):
-        return str(self.fecha_cama)
+        return str(self.semana)
