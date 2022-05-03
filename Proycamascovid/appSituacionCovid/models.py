@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib import admin
 # Create your models here now.
 
 class personas_covid(models.Model):
@@ -10,6 +10,7 @@ class personas_covid(models.Model):
     )
 
     semana = models.IntegerField(blank=True, null=True, default=0)
+    fecha = models.DateField(blank=True, null=True)
     fuerza = models.PositiveSmallIntegerField(choices=FUERZAS, null=True, blank=True)
     activos = models.IntegerField(blank=True, null=True, default=0)
     recuperados = models.IntegerField(blank=True, null=True, default=0)
@@ -61,3 +62,8 @@ class camas_hospitales(models.Model):
 
     def __str__(self):
         return str(self.semana)
+
+class role_inline(admin.TabularInline):
+    model = camas_hospitales
+    extra = 1
+
