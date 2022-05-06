@@ -34,7 +34,9 @@ class hospitales(models.Model):
         (3, 'ARA'),
     )
 
+    semana = models.IntegerField(blank=True, null=True, default=0)
     hospital = models.CharField(max_length=50)
+    total_de_camas = models.IntegerField(blank=True, null=True)
     region = models.PositiveSmallIntegerField(choices=REGION, null=True, blank=True)
     fuerza = models.PositiveSmallIntegerField(choices=FFAA, null=True, blank=True)
 
@@ -51,8 +53,6 @@ class camas_hospitales(models.Model):
         (3, 'AISLAMIENTO')
     )
 
-    semana = models.IntegerField(blank=True, null=True, default=0)
-    camas_ocupadas = models.IntegerField(blank=True, null=True, default=0)
     camas_libres = models.IntegerField(blank=True, null=True, default=0)
     hospital = models.ForeignKey(hospitales, blank=True, null=True, on_delete=models.CASCADE)
     situacion = models.PositiveSmallIntegerField(choices=SITCAMAS, null=True, blank=True)
@@ -61,7 +61,7 @@ class camas_hospitales(models.Model):
         verbose_name_plural = "Camas Hospitales"
 
     def __str__(self):
-        return str(self.semana)
+        return str(self.camas_libres)
 
 class role_inline(admin.TabularInline):
     model = camas_hospitales
